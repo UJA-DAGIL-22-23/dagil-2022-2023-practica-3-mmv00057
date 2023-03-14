@@ -469,7 +469,8 @@ Primer documento:
       1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0
+    "numeroParticipacionesOlimpicas": 0,
+     "tipo": "Artificial"
   }
 }
 
@@ -493,7 +494,8 @@ Segundo documento:
       1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0
+    "numeroParticipacionesOlimpicas": 0,
+     "tipo": "Alpina"
   }
 }
 Tercero documento:
@@ -516,7 +518,8 @@ Tercero documento:
       1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0
+    "numeroParticipacionesOlimpicas": 0,
+    "tipo": "Libre"
   }
 }
 Cuarto documento:
@@ -539,7 +542,8 @@ Cuarto documento:
       1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0
+    "numeroParticipacionesOlimpicas": 0,
+    "tipo": "en Velocidad"
   }
 }
 Quinto documento:
@@ -563,7 +567,8 @@ Quinto documento:
         1950,
         1978
       ],
-      "numeroParticipacionesOlimpicas": 0
+      "numeroParticipacionesOlimpicas": 0,
+       "tipo": "en Bloque"
     }
   }
 }
@@ -588,7 +593,8 @@ Sexto documento:
         1950,
         1978
       ],
-      "numeroParticipacionesOlimpicas": 0
+      "numeroParticipacionesOlimpicas": 0,
+       "tipo": "Alpina"
     }
   }
 }
@@ -613,7 +619,8 @@ Septimo documento:
         1950,
         1978
       ],
-      "numeroParticipacionesOlimpicas": 0
+      "numeroParticipacionesOlimpicas": 0,
+      "tipo": "Artificial"
     }
   }
 }
@@ -638,7 +645,8 @@ Octavo documento:
         1950,
         1978
       ],
-      "numeroParticipacionesOlimpicas": 0
+      "numeroParticipacionesOlimpicas": 0,
+      "tipo": "Libre"
     }
   }
 }
@@ -660,7 +668,8 @@ Noveno documento:
       1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0
+    "numeroParticipacionesOlimpicas": 0,
+    "tipo": "en Velocidad"
   }
 }
 Decimo documento:
@@ -681,7 +690,8 @@ Decimo documento:
       1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0
+    "numeroParticipacionesOlimpicas": 0,
+     "tipo": "en Bloque"
   }
 }
 ```
