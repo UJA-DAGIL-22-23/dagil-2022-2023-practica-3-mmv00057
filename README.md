@@ -436,3 +436,249 @@ https://github.com/UJA-Desarrollo-Agil/descripcion-proyecto-microservicios-perso
 El código en ese repositorio muestra una aplicación similar, pero con mucha más funcionalidad que esta plantilla: acceso a base de datos remota, listado de documentos recuperados de la BBDD, peticiones entre distintos microservicios, etc.
 
 Además, incluye documentación sobre dicho código y un vídeo descriptivo de cómo se ha realizado y cómo funciona la aplicación de ejemplo.
+
+
+
+
+
+Capturas de pantalla:
+<image src="C:\Users\modes\Desktop\UNIVERSIDAD\DESARROLLO-AGIL\PRACTICAS\PRACTICA3\foto1.jpg" alt="Foto de la pagina de home">
+<image src="C:\Users\modes\Desktop\UNIVERSIDAD\DESARROLLO-AGIL\PRACTICAS\PRACTICA3\foto2.jpg" alt="Foto de la base de datos">
+<image src="C:\Users\modes\Desktop\UNIVERSIDAD\DESARROLLO-AGIL\PRACTICAS\PRACTICA3\foto3.jpg" alt="Foto de la coleccion">
+
+Contenido de los documentos:
+Primer documento:
+{
+  "ref": Ref(Collection("ESCALADA"), "358543989873311948"),
+  "ts": 1678794757730000,
+  "data": {
+    "nombreCompleto": {
+      "nombre": "Alberto",
+      "apellido": "Gines"
+    },
+    "direccion": {
+      "calle": "Sal si puedes",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
+    "aniosParticipacionMundial": [
+      1930,
+      1950,
+      1978
+    ],
+    "numeroParticipacionesOlimpicas": 0
+  }
+}
+
+Segundo documento:
+{
+  "ref": Ref(Collection("ESCALADA"), "358544162225651917"),
+  "ts": 1678794832820000,
+  "data": {
+    "nombreCompleto": {
+      "nombre": "Alex",
+      "apellido": "Megos"
+    },
+    "direccion": {
+      "calle": "Sal si puedes",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
+    "aniosParticipacionMundial": [
+      1930,
+      1950,
+      1978
+    ],
+    "numeroParticipacionesOlimpicas": 0
+  }
+}
+Tercero documento:
+{
+  "ref": Ref(Collection("ESCALADA"), "358544167446511821"),
+  "ts": 1678794866380000,
+  "data": {
+    "nombreCompleto": {
+      "nombre": "Ashima",
+      "apellido": "Shiraishi"
+    },
+    "direccion": {
+      "calle": "Sal si puedes ",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
+    "aniosParticipacionMundial": [
+      1930,
+      1950,
+      1978
+    ],
+    "numeroParticipacionesOlimpicas": 0
+  }
+}
+Cuarto documento:
+{
+  "ref": Ref(Collection("ESCALADA"), "358544172259475661"),
+  "ts": 1678794906380000,
+  "data": {
+    "nombreCompleto": {
+      "nombre": "Adam",
+      "apellido": "Ondra"
+    },
+    "direccion": {
+      "calle": "Sal si puedes",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
+    "aniosParticipacionMundial": [
+      1930,
+      1950,
+      1978
+    ],
+    "numeroParticipacionesOlimpicas": 0
+  }
+}
+Quinto documento:
+{
+  "ref": Ref(Collection("ESCALADA"), "359174467601039565"),
+  "ts": 1678796490955000,
+  "data": {
+    "data": {
+      "nombreCompleto": {
+        "nombre": "Chris",
+        "apellido": "Sharma"
+      },
+      "direccion": {
+        "calle": "Sal si puedes",
+        "localidad": "Jaen",
+        "provincia": "Jaen",
+        "pais": "España"
+      },
+      "aniosParticipacionMundial": [
+        1930,
+        1950,
+        1978
+      ],
+      "numeroParticipacionesOlimpicas": 0
+    }
+  }
+}
+Sexto documento:
+{
+  "ref": Ref(Collection("ESCALADA"), "359174473156395213"),
+  "ts": 1678796532400000,
+  "data": {
+    "data": {
+      "nombreCompleto": {
+        "nombre": "Alex",
+        "apellido": "Honnold"
+      },
+      "direccion": {
+        "calle": "Sal si puedes",
+        "localidad": "Jaen",
+        "provincia": "Jaen",
+        "pais": "España"
+      },
+      "aniosParticipacionMundial": [
+        1930,
+        1950,
+        1978
+      ],
+      "numeroParticipacionesOlimpicas": 0
+    }
+  }
+}
+Septimo documento:
+{
+  "ref": Ref(Collection("ESCALADA"), "359174477978796236"),
+  "ts": 1678796578550000,
+  "data": {
+    "data": {
+      "nombreCompleto": {
+        "nombre": "Sasha",
+        "apellido": "DiGiulian"
+      },
+      "direccion": {
+        "calle": "Sal si puedes",
+        "localidad": "Jaen",
+        "provincia": "Jaen",
+        "pais": "España"
+      },
+      "aniosParticipacionMundial": [
+        1930,
+        1950,
+        1978
+      ],
+      "numeroParticipacionesOlimpicas": 0
+    }
+  }
+}
+Octavo documento:
+{
+  "ref": Ref(Collection("ESCALADA"), "359174485014741197"),
+  "ts": 1678796621350000,
+  "data": {
+    "data": {
+      "nombreCompleto": {
+        "nombre": "Daniel",
+        "apellido": "Woods"
+      },
+      "direccion": {
+        "calle": "Sal si puedes",
+        "localidad": "Jaen",
+        "provincia": "Jaen",
+        "pais": "España"
+      },
+      "aniosParticipacionMundial": [
+        1930,
+        1950,
+        1978
+      ],
+      "numeroParticipacionesOlimpicas": 0
+    }
+  }
+}
+Noveno documento:
+{
+  "data": {
+    "nombreCompleto": {
+      "nombre": "Tommy",
+      "apellido": "Caldwell"
+    },
+    "direccion": {
+      "calle": "Sal si puedes",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
+    "aniosParticipacionMundial": [
+      1930,
+      1950,
+      1978
+    ],
+    "numeroParticipacionesOlimpicas": 0
+  }
+}
+Decimo documento:
+{
+  "data": {
+    "nombreCompleto": {
+      "nombre": "Angela",
+      "apellido": "Eiter"
+    },
+    "direccion": {
+      "calle": "Sal si puedes",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
+    "aniosParticipacionMundial": [
+      1930,
+      1950,
+      1978
+    ],
+    "numeroParticipacionesOlimpicas": 0
+  }
+}
