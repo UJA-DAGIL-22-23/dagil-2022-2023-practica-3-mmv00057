@@ -442,9 +442,9 @@ Además, incluye documentación sobre dicho código y un vídeo descriptivo de c
 
 
 Capturas de pantalla:
-(./assets/img/foto1.jpg)
-(./assets/img/foto2.jpg)
-(./assets/img/foto3.jpg)
+![Pantalla de home en fauna](./assets/img/foto1.jpg)
+![Pagina en la que aparece la base de datos](./assets/img/foto2.jpg)
+![Pagina de la coleccion](./assets/img/foto3.jpg)
 Contenido de los documentos:
 ```
 Primer documento:
