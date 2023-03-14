@@ -440,6 +440,8 @@ Además, incluye documentación sobre dicho código y un vídeo descriptivo de c
 
 
 
+Enlace a trello:
+https://trello.com/invite/b/lbyixKLJ/ATTIa510caff46c8bec1eb4f483467e7d0dc800196C5/practica-3
 
 Capturas de pantalla:
 ![Pantalla de home en fauna](./assets/img/foto1.jpg)
