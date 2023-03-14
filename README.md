@@ -442,11 +442,11 @@ Además, incluye documentación sobre dicho código y un vídeo descriptivo de c
 
 
 Capturas de pantalla:
-<image src="C:\Users\modes\Desktop\UNIVERSIDAD\DESARROLLO-AGIL\PRACTICAS\PRACTICA3\foto1.jpg" alt="Foto de la pagina de home">
-<image src="C:\Users\modes\Desktop\UNIVERSIDAD\DESARROLLO-AGIL\PRACTICAS\PRACTICA3\foto2.jpg" alt="Foto de la base de datos">
-<image src="C:\Users\modes\Desktop\UNIVERSIDAD\DESARROLLO-AGIL\PRACTICAS\PRACTICA3\foto3.jpg" alt="Foto de la coleccion">
-
+(./assets/img/foto1.jpg)
+(./assets/img/foto2.jpg)
+(./assets/img/foto3.jpg)
 Contenido de los documentos:
+```
 Primer documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358543989873311948"),
@@ -682,3 +682,4 @@ Decimo documento:
     "numeroParticipacionesOlimpicas": 0
   }
 }
+```
