@@ -695,3 +695,5 @@ Decimo documento:
   }
 }
 ```
+Captura de pantalla de trello al inicio del incremento
+![Pantalla de home en fauna](./assets/img/trello1.png)
