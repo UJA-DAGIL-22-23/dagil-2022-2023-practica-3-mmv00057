@@ -95,7 +95,7 @@ const CB_OTHERS = {
                 mensaje: "Microservicio MS Plantilla: acerca de",
                 autor: "Modesto Monzon Vazquez",
                 email: "mmv00057@red.ujaen.es",
-                fecha: "Marzo"
+                fecha: "Marzo de 2023"
             });
         } catch (error) {
             CORS(res).status(500).json({ error: error.description })
