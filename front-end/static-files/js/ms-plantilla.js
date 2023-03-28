@@ -19,6 +19,74 @@ Plantilla.datosDescargadosNulos = {
 }
 
 
+/// Objeto para almacenar los datos de la persona que se está mostrando
+Plantilla.personaMostrada = null
+
+/// Plantilla para poner los datos de una persona en un tabla dentro de un formulario
+Plantilla.plantillaFormularioPersona = {}
+
+/**
+ * Imprime los datos de una persona como una tabla dentro de un formulario usando la plantilla del formulario.
+ * @param {persona} Persona Objeto con los datos de la persona
+ * @returns Una cadena con la tabla que tiene ya los datos actualizados
+ */
+Plantilla.personaComoFormulario = function (persona) {
+    return Plantilla.plantillaFormularioPersona.actualiza( persona );
+}
+
+/**
+ * Almacena los datos de la persona que se está mostrando
+ * @param {Persona} persona Datos de la persona a almacenar
+ */
+
+Plantilla.almacenaDatos = function (persona) {
+    Plantilla.personaMostrada = persona;
+}
+
+/**
+ * Función para mostrar en pantalla los detalles de una persona que se ha recuperado de la BBDD por su id
+ * @param {Persona} persona Datos de la persona a mostrar
+ */
+
+Plantilla.imprimeUnaPersona = function (persona) {
+    // console.log(persona) // Para comprobar lo que hay en vector
+    let msj = Plantilla.personaComoFormulario(persona);
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar("Mostrar una persona", msj)
+
+    // Actualiza el objeto que guarda los datos mostrados
+    Plantilla.almacenaDatos(persona)
+}
+
+/**
+ * Función que recuperar todas las personas llamando al MS Personas. 
+ * Posteriormente, llama a la función callBackFn para trabajar con los datos recuperados.
+ * @param {String} idPersona Identificador de la persona a mostrar
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+Plantilla.recuperaUnaPersona = async function (idPersona, callBackFn) {
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getPorId/" + idPersona
+        const response = await fetch(url);
+        if (response) {
+            const persona = await response.json()
+            callBackFn(persona)
+        }
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+    }
+}
+
+/**
+ * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
+ * @param {String} idPersona Identificador de la persona a mostrar
+ */
+Plantilla.mostrar = function (idPersona) {
+    this.recuperaUnaPersona(idPersona, this.imprimeUnaPersona);
+}
+
 /**
  * Función que descarga la info MS Plantilla al llamar a una de sus rutas
  * @param {string} ruta Ruta a descargar
@@ -147,6 +215,15 @@ Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
     return Plantilla.sustituyeTags(this.cuerpo, persona)
 }
 
+/**
+ * Actualiza el formulario con los datos de la persona que se le pasa
+ * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */
+Plantilla.plantillaFormularioPersona.actualiza = function (persona) {
+    return Personas.sustituyeTags(this.formulario, persona)
+}
+
 
 /**
  * Función para mostrar en pantalla todas las personas que se han recuperado de la BBDD.
@@ -255,7 +332,7 @@ Plantilla.guardar = async function () {
             alert(persona)
         }
         */
-        Personas.mostrar(id_persona)
+        Plantilla.mostrar(id_persona)
     } catch (error) {
         alert("Error: No se han podido acceder al API Gateway " + error)
         //console.error(error)
