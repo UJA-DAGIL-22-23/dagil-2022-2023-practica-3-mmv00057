@@ -55,6 +55,7 @@ const CB_MODEL_SELECTS = {
                     q.Lambda("X", q.Get(q.Var("X")))
                 )
             )
+            console.log(personas)
             res.status(200).json(personas)
         } catch (error) {
             res.status(500).json({ error: error.description })

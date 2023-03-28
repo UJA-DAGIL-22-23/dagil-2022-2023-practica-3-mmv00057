@@ -107,5 +107,157 @@ Plantilla.procesarAcercaDe = function () {
     this.descargarRuta("/plantilla/acercade", this.mostrarAcercaDe);
 }
 
+// Tags que voy a usar para sustituir los campos
+Plantilla.plantillaTags = {
+    "ID": "### ID ###",
+    "NOMBRE": "### NOMBRE ###",
+    "APELLIDOS": "### APELLIDOS ###",
+    "DIRECCION": "### DIRECCION ###",
+    "AÑOS PARTICIPACION": "### AÑOS PARTICIPACION ###",
+    "PARTICIPACIONES OLIMPICAS" : "### PARTICIPACIONES OLIMPICAS ###",
+    "TIPO": "### TIPO ###",
+}
+
+/**
+ * Actualiza el cuerpo de la plantilla deseada con los datos de la persona que se le pasa
+ * @param {String} Plantilla Cadena conteniendo HTML en la que se desea cambiar lso campos de la plantilla por datos
+ * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */  
+Plantilla.sustituyeTags = function (plantilla, persona) {
+    return plantilla
+        .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
+        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.nombreCompleto.nombre)
+        .replace(new RegExp(Plantilla.plantillaTags.APELLIDOS, 'g'), persona.data.nombreCompleto.apellido)
+        .replace(new RegExp(Plantilla.plantillaTags.DIRECCION, 'g'), persona.data.direccion.calle + ","+ persona.data.direccion.localidad + "," +
+         persona.data.direccion.provincia + "," + persona.data.direccion.pais)
+        .replace(new RegExp(Plantilla.plantillaTags["AÑOS PARTICIPACION"], 'g'), persona.data.aniosParticipacionMundial)
+        .replace(new RegExp(Plantilla.plantillaTags["PARTICIPACIONES OLIMPICAS"], 'g'), persona.data.numeroParticipacionesOlimpicas)
+        .replace(new RegExp(Plantilla.plantillaTags.TIPO, 'g'), persona.data.tipo)
+
+    }
 
 
+/**
+ * Actualiza el cuerpo de la tabla con los datos de la persona que se le pasa
+ * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */
+Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
+    return Plantilla.sustituyeTags(this.cuerpo, persona)
+}
+
+
+/**
+ * Función para mostrar en pantalla todas las personas que se han recuperado de la BBDD.
+ * @param {Vector_de_personas} vector Vector con los datos de las personas a mostrar
+ */
+
+Plantilla.imprimeMuchasPersonas = function (vector) {
+    // console.log(vector) // Para comprobar lo que hay en vector
+
+    // Compongo el contenido que se va a mostrar dentro de la tabla
+    let msj = Plantilla.plantillaTablaPersonas.cabecera
+    vector.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualiza(e) ,
+        console.log(e)
+    )
+    msj += Plantilla.plantillaTablaPersonas.pie
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar("Listado de personas", msj)
+}
+
+/**
+ * Función que recuperar todas las personas llamando al MS Personas
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+
+Plantilla.recupera = async function (callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio personas
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todas las persoans que se han descargado
+    let vectorPersonas = null
+    if (response) {
+        vectorPersonas = await response.json()
+        callBackFn(vectorPersonas.data)
+    }
+}
+
+/**
+ * Función principal para recuperar las personas desde el MS y, posteriormente, imprimirlas.
+ */
+Plantilla.listar = function () {
+    Plantilla.recupera(Plantilla.imprimeMuchasPersonas);
+}
+
+
+
+/**
+ * Función que permite modificar los datos de una persona
+ */
+Plantilla.editar = function () {
+    this.ocultarOpcionesSecundarias()
+    this.mostrarOcionesTerciariasEditar()
+    this.habilitarCamposEditables()
+}
+
+/**
+ * Función que permite cancelar la acción sobre los datos de una persona
+ */
+Plantilla.cancelar = function () {
+    this.imprimeUnaPersona(this.recuperaDatosAlmacenados())
+    this.deshabilitarCamposEditables()
+    this.ocultarOcionesTerciariasEditar()
+    this.mostrarOpcionesSecundarias()
+}
+
+
+/**
+ * Función para guardar los nuevos datos de una persona
+ */
+Plantilla.guardar = async function () {
+    try {
+        let url = Frontend.API_GATEWAY + "/plantilla/setTodo/"
+        let id_persona = document.getElementById("form-persona-id").value
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'no-cors', // no-cors, cors, *same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'omit', // include, *same-origin, omit
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrer: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify({
+                "id_persona": id_persona,
+                "nombre_persona": document.getElementById("form-persona-nombre").value,
+                "apellidos_persona": document.getElementById("form-persona-apellidos").value,
+                "email_persona": document.getElementById("form-persona-email").value,
+                "año_entrada_persona": document.getElementById("form-persona-anio").value
+            }), // body data type must match "Content-Type" header
+        })
+        /*
+        Error: No procesa bien la respuesta devuelta
+        if (response) {
+            const persona = await response.json()
+            alert(persona)
+        }
+        */
+        Personas.mostrar(id_persona)
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway " + error)
+        //console.error(error)
+    }
+}
