@@ -173,7 +173,7 @@ Plantilla.cuerpoTr = function (p) {
     const tipo = d.tipo;
 
     return `<tr title="${p.ref['@ref'].id}">
-    <td>${d.id}</td>
+    <td>${p.ref['@ref'].id}</td>
     <td>${nombre}</td>
     <td> ${apellidos}</td>
     <td>"${direccion}"</td>
@@ -189,7 +189,7 @@ Plantilla.cuerpoTrNombres = function (p) {
   
 
     return `<tr title="${p.ref['@ref'].id}">
-    <td>${d.alias}</td>
+    <td>${p.ref['@ref'].id}</td>
     <td>${nombre}</td>
     <td> ${apellidos}</td>
     </tr>`;
