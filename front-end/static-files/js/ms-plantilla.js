@@ -141,7 +141,7 @@ Plantilla.recupera = async function (callBackFn) {
  * @returns Cabecera de la tabla
  */
 Plantilla.cabeceraTable = function () {
-    return `<table class="listado-proyectos">
+    return `<table class="listado-personas">
         <thead>
         <th>Alias</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Años participación</th><th>Número participaciones</th><th>Tipo</th> 
         </thead>
@@ -150,7 +150,7 @@ Plantilla.cabeceraTable = function () {
 }
 
 Plantilla.cabeceraTableNombres = function () {
-    return `<table class="listado-proyectos">
+    return `<table class="listado-personas">
         <thead>
         <th>Alias</th><th>Nombre</th><th>Apellidos</th>
         </thead>

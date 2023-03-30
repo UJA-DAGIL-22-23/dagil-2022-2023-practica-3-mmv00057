@@ -10,13 +10,13 @@
      font-family: 'Source Sans Pro', sans-serif;
  }
  
- table.listado-proyectos {
+ table.listado-personas {
      width: 100%;
      border: 1px solid rgba(0, 0, 100, 0.8);
  }
  
- table.listado-proyectos thead th,
- table.listado-proyectos tbody th {
+ table.listado-personas thead th,
+ table.listado-personas tbody th {
      margin: 3px;
      height: 2.5em;
      background-color: rgba(0, 0, 0, 0.4);
@@ -25,16 +25,16 @@
  }
  
  
- table.listado-proyectos tbody th {
+ table.listado-personas tbody th {
      background-color: rgba(0, 0, 0, 0.1);
  }
  
- table.listado-proyectos tbody td {
+ table.listado-personas tbody td {
      padding: 0.5em;
      text-align: center;
  }
  
- table.listado-proyectos tbody tr {
+ table.listado-personas tbody tr {
      margin: 3px;
      height: 2em;
      background-color: rgba(0, 0, 100, 0.1)
