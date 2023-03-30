@@ -159,7 +159,7 @@ Plantilla.cabeceraTableNombres = function () {
 }
 
 /**
- * Muestra la información de cada proyecto en un elemento TR con sus correspondientes TD
+ * Muestra la información de cada persona en un elemento TR con sus correspondientes TD
  * @param {persona} p d del proyecto a mostrar
  * @returns Cadena conteniendo todo el elemento TR que muestra el proyecto.
  */
@@ -173,10 +173,10 @@ Plantilla.cuerpoTr = function (p) {
     const tipo = d.tipo;
 
     return `<tr title="${p.ref['@ref'].id}">
-    <td>${d.alias}</td>
+    <td>${d.id}</td>
     <td>${nombre}</td>
     <td> ${apellidos}</td>
-    <td>${direccion}</td>
+    <td>"${direccion}"</td>
     <td>${añosParticipacion}</td>
     <td>${numCompeticiones}</td>
     <td>(${tipo})</td>

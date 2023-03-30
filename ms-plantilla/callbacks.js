@@ -74,7 +74,7 @@ const CB_MODEL_SELECTS = {
                     q.Lambda("X", q.Get(q.Var("X")))
                 )
             )   
-            // console.log( personas ) // Para comprobar qué se ha devuelto en personas
+            console.log( personas ) // Para comprobar qué se ha devuelto en personas
             CORS(res)
                 .status(200)
                 .json(personas)
