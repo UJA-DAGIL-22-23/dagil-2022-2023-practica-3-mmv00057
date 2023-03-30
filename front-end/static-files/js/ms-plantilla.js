@@ -143,7 +143,7 @@ Plantilla.recupera = async function (callBackFn) {
 Plantilla.cabeceraTable = function () {
     return `<table class="listado-personas">
         <thead>
-        <th>Alias</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Años participación</th><th>Número participaciones</th><th>Tipo</th> 
+        <th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Años participación</th><th>Número participaciones</th><th>Tipo</th> 
         </thead>
         <tbody>
     `;
@@ -152,7 +152,7 @@ Plantilla.cabeceraTable = function () {
 Plantilla.cabeceraTableNombres = function () {
     return `<table class="listado-personas">
         <thead>
-        <th>Alias</th><th>Nombre</th><th>Apellidos</th>
+        <th>ID</th><th>Nombre</th><th>Apellidos</th>
         </thead>
         <tbody>
     `;
@@ -165,27 +165,27 @@ Plantilla.cabeceraTableNombres = function () {
  */
 Plantilla.cuerpoTr = function (p) {
     const d = p.data;
-    const nombre = d.nombre;
-    const apellidos = d.apellidos;
+    const nombre = d.nombreCompleto;
+    const apellidos = d.nombreCompleto;
     const direccion = d.direccion;
-    const añosParticipacion = d.añosParticipacion;
-    const numCompeticiones = d.numCompeticiones;
+    const añosParticipacion = d.aniosParticipacionMundial;
+    const numCompeticiones = d.numeroParticipacionesOlimpicas;
     const tipo = d.tipo;
 
     return `<tr title="${p.ref['@ref'].id}">
     <td>${p.ref['@ref'].id}</td>
     <td>${nombre}</td>
     <td> ${apellidos}</td>
-    <td>"${direccion}"</td>
+    <td>${direccion}</td>
     <td>${añosParticipacion}</td>
     <td>${numCompeticiones}</td>
-    <td>(${tipo})</td>
+    <td>${tipo}</td>
     </tr>`;
 }
 Plantilla.cuerpoTrNombres = function (p) {
     const d = p.data;
-    const nombre = d.nombre;
-    const apellidos = d.apellidos;
+    const nombre = d.nombreCompleto;
+    const apellidos = d.nombreCompleto;
   
 
     return `<tr title="${p.ref['@ref'].id}">
