@@ -165,9 +165,12 @@ Plantilla.cabeceraTableNombres = function () {
  */
 Plantilla.cuerpoTr = function (p) {
     const d = p.data;
-    const nombre = d.nombreCompleto;
-    const apellidos = d.nombreCompleto;
-    const direccion = d.direccion;
+    const nombre = d.nombre;
+    const apellidos = d.apellido;
+    const calle = d.calle;
+    const localidad = d.localidad;
+    const provincia = d.provincia;
+    const pais = d.pais;
     const añosParticipacion = d.aniosParticipacionMundial;
     const numCompeticiones = d.numeroParticipacionesOlimpicas;
     const tipo = d.tipo;
@@ -176,7 +179,7 @@ Plantilla.cuerpoTr = function (p) {
     <td>${p.ref['@ref'].id}</td>
     <td>${nombre}</td>
     <td> ${apellidos}</td>
-    <td>${direccion}</td>
+    <td>${calle},${localidad},${provincia},${pais}</td>
     <td>${añosParticipacion}</td>
     <td>${numCompeticiones}</td>
     <td>${tipo}</td>
@@ -184,8 +187,8 @@ Plantilla.cuerpoTr = function (p) {
 }
 Plantilla.cuerpoTrNombres = function (p) {
     const d = p.data;
-    const nombre = d.nombreCompleto;
-    const apellidos = d.nombreCompleto;
+    const nombre = d.nombre;
+    const apellidos = d.apellido;
   
 
     return `<tr title="${p.ref['@ref'].id}">
