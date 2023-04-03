@@ -198,7 +198,6 @@ Plantilla.cuerpoTrNombres = function (p) {
     </tr>`;
 }
 
-
 /**
  * Pie de la tabla en la que se muestran las personas
  * @returns Cadena con el pie de la tabla
