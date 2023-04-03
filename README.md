@@ -452,248 +452,203 @@ Contenido de los documentos:
 Primer documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358543989873311948"),
-  "ts": 1678794757730000,
+  "ts": 1680536451710000,
   "data": {
-    "nombreCompleto": {
-      "nombre": "Alberto",
-      "apellido": "Gines"
-    },
-    "direccion": {
-      "calle": "Sal si puedes",
-      "localidad": "Jaen",
-      "provincia": "Jaen",
-      "pais": "España"
-    },
+    "nombre": "Alberto",
+    "apellido": "Gines",
+    "calle": "Sal si puedes",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
     "aniosParticipacionMundial": [
       1930,
-      1950,
-      1978
+      1950
     ],
-    "numeroParticipacionesOlimpicas": 0,
-     "tipo": "Artificial"
+    "numeroParticipacionesOlimpicas": 2,
+    "tipo": "Artificial"
   }
 }
 
 Segundo documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358544162225651917"),
-  "ts": 1678794832820000,
+  "ts": 1680511807580000,
   "data": {
-    "nombreCompleto": {
-      "nombre": "Alex",
-      "apellido": "Megos"
-    },
-    "direccion": {
-      "calle": "Sal si puedes",
-      "localidad": "Jaen",
-      "provincia": "Jaen",
-      "pais": "España"
-    },
+    "nombre": "Alex",
+    "apellido": "Megos",
+    "calle": "Avd. Madrid",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
     "aniosParticipacionMundial": [
       1930,
       1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0,
-     "tipo": "Alpina"
+    "numeroParticipacionesOlimpicas": 3,
+    "tipo": "Alpina"
   }
 }
 Tercero documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358544167446511821"),
-  "ts": 1678794866380000,
+  "ts": 1680511845435000,
   "data": {
-    "nombreCompleto": {
-      "nombre": "Ashima",
-      "apellido": "Shiraishi"
-    },
-    "direccion": {
-      "calle": "Sal si puedes ",
-      "localidad": "Jaen",
-      "provincia": "Jaen",
-      "pais": "España"
-    },
+    "nombre": "Ashima",
+    "apellido": "Shiraishi",
+    "calle": "Avd. Granada",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
     "aniosParticipacionMundial": [
       1930,
       1950,
-      1978
+      1978,
+      1986
     ],
-    "numeroParticipacionesOlimpicas": 0,
+    "numeroParticipacionesOlimpicas": 4,
     "tipo": "Libre"
   }
 }
 Cuarto documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358544172259475661"),
-  "ts": 1678794906380000,
+  "ts": 1680511858895000,
   "data": {
-    "nombreCompleto": {
-      "nombre": "Adam",
-      "apellido": "Ondra"
-    },
-    "direccion": {
-      "calle": "Sal si puedes",
-      "localidad": "Jaen",
-      "provincia": "Jaen",
-      "pais": "España"
-    },
+    "nombre": "Adam",
+    "apellido": "Ondra",
+    "calle": "Santo Reino",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
     "aniosParticipacionMundial": [
       1930,
       1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0,
+    "numeroParticipacionesOlimpicas": 3,
     "tipo": "en Velocidad"
   }
 }
 Quinto documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174467601039565"),
-  "ts": 1678796490955000,
+  "ts": 1680511896270000,
   "data": {
-    "data": {
-      "nombreCompleto": {
-        "nombre": "Chris",
-        "apellido": "Sharma"
-      },
-      "direccion": {
-        "calle": "Sal si puedes",
-        "localidad": "Jaen",
-        "provincia": "Jaen",
-        "pais": "España"
-      },
-      "aniosParticipacionMundial": [
-        1930,
-        1950,
-        1978
-      ],
-      "numeroParticipacionesOlimpicas": 0,
-       "tipo": "en Bloque"
-    }
+    "nombre": "Chris",
+    "apellido": "Sharma",
+    "calle": "Huelma",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
+    "aniosParticipacionMundial": [
+      2000,
+      2004,
+      2008,
+      2012,
+      2016
+    ],
+    "numeroParticipacionesOlimpicas": 5,
+    "tipo": "en Bloque"
   }
 }
 Sexto documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174473156395213"),
-  "ts": 1678796532400000,
+  "ts": 1680511911885000,
   "data": {
-    "data": {
-      "nombreCompleto": {
-        "nombre": "Alex",
-        "apellido": "Honnold"
-      },
-      "direccion": {
-        "calle": "Sal si puedes",
-        "localidad": "Jaen",
-        "provincia": "Jaen",
-        "pais": "España"
-      },
-      "aniosParticipacionMundial": [
-        1930,
-        1950,
-        1978
-      ],
-      "numeroParticipacionesOlimpicas": 0,
-       "tipo": "Alpina"
-    }
+    "nombre": "Alex",
+    "apellido": "Honnold",
+    "calle": "Millán de Priego",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
+    "aniosParticipacionMundial": [
+      1950,
+      1978
+    ],
+    "numeroParticipacionesOlimpicas": 2,
+    "tipo": "Alpina"
   }
 }
 Septimo documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174477978796236"),
-  "ts": 1678796578550000,
+  "ts": 1680512000805000,
   "data": {
-    "data": {
-      "nombreCompleto": {
-        "nombre": "Sasha",
-        "apellido": "DiGiulian"
-      },
-      "direccion": {
-        "calle": "Sal si puedes",
-        "localidad": "Jaen",
-        "provincia": "Jaen",
-        "pais": "España"
-      },
-      "aniosParticipacionMundial": [
-        1930,
-        1950,
-        1978
-      ],
-      "numeroParticipacionesOlimpicas": 0,
-      "tipo": "Artificial"
-    }
+    "nombre": "Sasha",
+    "apellido": "DiGiulian",
+    "calle": "Sauce",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
+    "aniosParticipacionMundial": [
+      2012,
+      2016,
+      2020
+    ],
+    "numeroParticipacionesOlimpicas": 3,
+    "tipo": "Artificial"
   }
 }
 Octavo documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174485014741197"),
-  "ts": 1678796621350000,
+  "ts": 1680512020350000,
   "data": {
-    "data": {
-      "nombreCompleto": {
-        "nombre": "Daniel",
-        "apellido": "Woods"
-      },
-      "direccion": {
-        "calle": "Sal si puedes",
-        "localidad": "Jaen",
-        "provincia": "Jaen",
-        "pais": "España"
-      },
-      "aniosParticipacionMundial": [
-        1930,
-        1950,
-        1978
-      ],
-      "numeroParticipacionesOlimpicas": 0,
-      "tipo": "Libre"
-    }
+    "nombre": "Daniel",
+    "apellido": "Woods",
+    "calle": "Ruiz Romero",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
+    "aniosParticipacionMundial": [
+      1930,
+      1978
+    ],
+    "numeroParticipacionesOlimpicas": 2,
+    "tipo": "Libre"
   }
 }
 Noveno documento:
 {
+  "ref": Ref(Collection("ESCALADA"), "359174493989503180"),
+  "ts": 1680512037260000,
   "data": {
-    "nombreCompleto": {
-      "nombre": "Tommy",
-      "apellido": "Caldwell"
-    },
-    "direccion": {
-      "calle": "Sal si puedes",
-      "localidad": "Jaen",
-      "provincia": "Jaen",
-      "pais": "España"
-    },
+    "nombre": "Tommy",
+    "apellido": "Caldwell",
+    "calle": "Tres Morillas",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
     "aniosParticipacionMundial": [
-      1930,
-      1950,
       1978
     ],
-    "numeroParticipacionesOlimpicas": 0,
+    "numeroParticipacionesOlimpicas": 1,
     "tipo": "en Velocidad"
   }
 }
 Decimo documento:
 {
+  "ref": Ref(Collection("ESCALADA"), "359174497914323149"),
+  "ts": 1680512087940000,
   "data": {
-    "nombreCompleto": {
-      "nombre": "Angela",
-      "apellido": "Eiter"
-    },
-    "direccion": {
-      "calle": "Sal si puedes",
-      "localidad": "Jaen",
-      "provincia": "Jaen",
-      "pais": "España"
-    },
+    "nombre": "Angela",
+    "apellido": "Eiter",
+    "calle": "Almendros Aguilar",
+    "localidad": "Jaen",
+    "provincia": "Jaen",
+    "pais": "España",
     "aniosParticipacionMundial": [
-      1930,
-      1950,
-      1978
+      2008,
+      2020
     ],
-    "numeroParticipacionesOlimpicas": 0,
-     "tipo": "en Bloque"
+    "numeroParticipacionesOlimpicas": 2,
+    "tipo": "en Bloque"
   }
 }
 ```
-Captura de pantalla de trello al inicio del incremento
+Captura de pantalla de trello al inicio del incremento 1
 ![Pantalla de home en fauna](./assets/img/trello1.png)
+Captura de pantalla de trello al acabar el incremento 1
+![Pantalla de home en fauna](./assets/img/incremento1.png)
