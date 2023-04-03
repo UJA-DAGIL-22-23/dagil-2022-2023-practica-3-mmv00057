@@ -652,3 +652,5 @@ Captura de pantalla de trello al inicio del incremento 1
 ![Pantalla de home en fauna](./assets/img/trello1.png)
 Captura de pantalla de trello al acabar el incremento 1
 ![Pantalla de home en fauna](./assets/img/incremento1.png)
+Captura de pantalla de trello al inicio el incremento 2
+![Pantalla de home en fauna](./assets/img/incremento1.png)
