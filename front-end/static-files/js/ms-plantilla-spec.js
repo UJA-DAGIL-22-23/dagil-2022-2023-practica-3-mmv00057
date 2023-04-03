@@ -138,7 +138,6 @@ Esto afecta a los métodos:
  por tanto: para esta práctica, se pueden dejar SIN HACER.
 
  */
-
  describe("Plantilla.cuerpoTr: ", function () {
     it('devuelve una cadena HTML que representa una fila de tabla con los datos de una persona', () => {
         // arrange
@@ -213,7 +212,6 @@ describe("Plantilla.pieTable()", function () {
       expect(scope.isDone()).toBe(true)
     })
   })
-
   describe("Prueba de la función 'imprime' de la clase 'Plantilla'", () => {
     test("La función debe generar un mensaje con la tabla HTML y actualizar el artículo con el mensaje generado", () => {
   
@@ -271,3 +269,4 @@ describe("Plantilla.pieTable()", function () {
       spyConsole.mockRestore();
     })
   })
+
