@@ -167,10 +167,7 @@ Plantilla.cuerpoTr = function (p) {
     const d = p.data;
     const nombre = d.nombre;
     const apellidos = d.apellido;
-    const calle = d.calle;
-    const localidad = d.localidad;
-    const provincia = d.provincia;
-    const pais = d.pais;
+    const direc = d.direccion;
     const añosParticipacion = d.aniosParticipacionMundial;
     const numCompeticiones = d.numeroParticipacionesOlimpicas;
     const tipo = d.tipo;
@@ -179,7 +176,7 @@ Plantilla.cuerpoTr = function (p) {
     <td>${p.ref['@ref'].id}</td>
     <td>${nombre}</td>
     <td> ${apellidos}</td>
-    <td>${calle},${localidad},${provincia},${pais}</td>
+    <td>${direc.calle},${direc.localidad},${direc.provincia},${direc.pais}</td>
     <td>${añosParticipacion}</td>
     <td>${numCompeticiones}</td>
     <td>${tipo}</td>
@@ -196,6 +193,52 @@ Plantilla.cuerpoTrNombres = function (p) {
     <td>${nombre}</td>
     <td> ${apellidos}</td>
     </tr>`;
+}
+
+
+Plantilla.buscador = function (p,name) {
+    const d = p.data;
+    const nombre = d.nombre;
+    const apellidos = d.apellido;
+    const direc = d.direccion;
+    const añosParticipacion = d.aniosParticipacionMundial;
+    const numCompeticiones = d.numeroParticipacionesOlimpicas;
+    const tipo = d.tipo;
+  
+    if (nombre === name) {
+      let table = document.createElement('table');
+      let tbody = document.createElement('tbody');
+  
+      let tr = document.createElement('tr');
+      let td1 = document.createElement('td');
+      td1.appendChild(document.createTextNode(p.ref['@ref'].id));
+      let td2 = document.createElement('td');
+      td2.appendChild(document.createTextNode(nombre));
+      let td3 = document.createElement('td');
+      td3.appendChild(document.createTextNode(apellidos));
+      let td4 = document.createElement('td');
+      td4.appendChild(document.createTextNode(`${direc.calle},${direc.localidad},${direc.provincia},${direc.pais}`));
+      let td5 = document.createElement('td');
+      td5.appendChild(document.createTextNode(añosParticipacion));
+      let td6 = document.createElement('td');
+      td6.appendChild(document.createTextNode(numCompeticiones));
+      let td7 = document.createElement('td');
+      td7.appendChild(document.createTextNode(tipo));
+  
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      tr.appendChild(td3);
+      tr.appendChild(td4);
+      tr.appendChild(td5);
+      tr.appendChild(td6);
+      tr.appendChild(td7);
+      tbody.appendChild(tr);
+      table.appendChild(tbody);
+      
+      return table.outerHTML;
+    } else {
+      return '';
+    }
 }
 
 /**
@@ -236,6 +279,18 @@ Plantilla.imprimeNombres = function (vector) {
 
 }
 
+Plantilla.imprimeBuscador = function (vector,searchTerm) {
+    console.log( vector ) // Para comprobar lo que hay en vector
+    let msj = "";
+    msj += Plantilla.cabeceraTable();
+    vector.forEach(e => msj += Plantilla.buscador(e,searchTerm))
+    msj += Plantilla.pieTable();
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar( "Persona buscada", msj )
+
+}
+
 /**
  * Función principal para recuperar los proyectos desde el MS y, posteriormente, imprimirlos.
  * @returns True
@@ -246,4 +301,8 @@ Plantilla.listar = function () {
 
 Plantilla.listarNombres = function () {
     this.recupera(this.imprimeNombres);
+}
+
+Plantilla.listarBuscar = function (searchTerm) {
+    this.recupera(this.imprimeBuscador(searchTerm));
 }

@@ -29,7 +29,11 @@
          title="Realiza un listado de todas las personas que hay en la BBDD">Listar personas</a>
          <a href="javascript:Plantilla.listarNombres()" class="opcion-principal mostrar"
          title="Realiza un listado de todas las personas que hay en la BBDD solo los nombres">Listar nombres personas</a>
-    
+         <form>
+            <label>Buscar por nombre :</label>
+            <input type="text" id="search" name="search">
+            <button type="button" onclick="Plantilla.listarBuscar(document.getElementById('search').value)">Buscar</button>
+          </form>
         </nav>
 
     <!-- 
