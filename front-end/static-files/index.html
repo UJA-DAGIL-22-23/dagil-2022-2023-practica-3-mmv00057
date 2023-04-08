@@ -29,11 +29,19 @@
          title="Realiza un listado de todas las personas que hay en la BBDD">Listar personas</a>
          <a href="javascript:Plantilla.listarNombres()" class="opcion-principal mostrar"
          title="Realiza un listado de todas las personas que hay en la BBDD solo los nombres">Listar nombres personas</a>
+         <a href="javascript:Plantilla.listarNombreAlfa()" class="opcion-principal mostrar"
+         title="Realiza un listado de todas las personas que hay en la BBDD en orden alfabetico">Listar personas en orden</a>
          <form>
-            <label>Buscar por nombre :</label>
+            <label>Buscar por nombre:</label>
             <input type="text" id="search" name="search">
-            <button type="button" onclick="Plantilla.listarBuscar(document.getElementById('search').value)">Buscar</button>
+            <button type="button" onclick="buscar()">Buscar</button>
           </form>
+          <script>
+            function buscar() {
+              var searchTerm = document.getElementById("search").value;
+              Plantilla.listarBuscar(searchTerm);
+            }
+          </script>
         </nav>
 
     <!-- 

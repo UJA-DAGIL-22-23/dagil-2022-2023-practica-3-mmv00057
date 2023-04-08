@@ -452,14 +452,16 @@ Contenido de los documentos:
 Primer documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358543989873311948"),
-  "ts": 1680536451710000,
+  "ts": 1680686995070000,
   "data": {
     "nombre": "Alberto",
     "apellido": "Gines",
-    "calle": "Sal si puedes",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Sal si puedes",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       1930,
       1950
@@ -472,14 +474,16 @@ Primer documento:
 Segundo documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358544162225651917"),
-  "ts": 1680511807580000,
+  "ts": 1680687008040000,
   "data": {
     "nombre": "Alex",
     "apellido": "Megos",
-    "calle": "Avd. Madrid",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Avd. Madrid",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       1930,
       1950,
@@ -492,14 +496,16 @@ Segundo documento:
 Tercero documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358544167446511821"),
-  "ts": 1680511845435000,
+  "ts": 1680687024110000,
   "data": {
     "nombre": "Ashima",
     "apellido": "Shiraishi",
-    "calle": "Avd. Granada",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Avd. Granada",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       1930,
       1950,
@@ -513,14 +519,16 @@ Tercero documento:
 Cuarto documento:
 {
   "ref": Ref(Collection("ESCALADA"), "358544172259475661"),
-  "ts": 1680511858895000,
+  "ts": 1680687034710000,
   "data": {
     "nombre": "Adam",
     "apellido": "Ondra",
-    "calle": "Santo Reino",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Santo Reino",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       1930,
       1950,
@@ -533,14 +541,16 @@ Cuarto documento:
 Quinto documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174467601039565"),
-  "ts": 1680511896270000,
+  "ts": 1680687047165000,
   "data": {
     "nombre": "Chris",
     "apellido": "Sharma",
-    "calle": "Huelma",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Huelma",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       2000,
       2004,
@@ -555,14 +565,16 @@ Quinto documento:
 Sexto documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174473156395213"),
-  "ts": 1680511911885000,
+  "ts": 1680687059080000,
   "data": {
     "nombre": "Alex",
     "apellido": "Honnold",
-    "calle": "Millán de Priego",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Millán de Priego",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       1950,
       1978
@@ -574,14 +586,16 @@ Sexto documento:
 Septimo documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174477978796236"),
-  "ts": 1680512000805000,
+  "ts": 1680687070420000,
   "data": {
     "nombre": "Sasha",
     "apellido": "DiGiulian",
-    "calle": "Sauce",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Sauce",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       2012,
       2016,
@@ -594,14 +608,16 @@ Septimo documento:
 Octavo documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174485014741197"),
-  "ts": 1680512020350000,
+  "ts": 1680687085500000,
   "data": {
     "nombre": "Daniel",
     "apellido": "Woods",
-    "calle": "Ruiz Romero",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Ruiz Romero",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       1930,
       1978
@@ -613,14 +629,16 @@ Octavo documento:
 Noveno documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174493989503180"),
-  "ts": 1680512037260000,
+  "ts": 1680687096490000,
   "data": {
     "nombre": "Tommy",
     "apellido": "Caldwell",
-    "calle": "Tres Morillas",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Tres Morillas",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       1978
     ],
@@ -631,14 +649,16 @@ Noveno documento:
 Decimo documento:
 {
   "ref": Ref(Collection("ESCALADA"), "359174497914323149"),
-  "ts": 1680512087940000,
+  "ts": 1680687109780000,
   "data": {
     "nombre": "Angela",
     "apellido": "Eiter",
-    "calle": "Almendros Aguilar",
-    "localidad": "Jaen",
-    "provincia": "Jaen",
-    "pais": "España",
+    "direccion": {
+      "calle": "Almendros Aguilar",
+      "localidad": "Jaen",
+      "provincia": "Jaen",
+      "pais": "España"
+    },
     "aniosParticipacionMundial": [
       2008,
       2020

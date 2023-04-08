@@ -134,6 +134,30 @@ Plantilla.recupera = async function (callBackFn) {
     }
 }
 
+Plantilla.recuperaBuscar = async function (callBackFn, nombre) {
+    let response = null
+
+    // Intento conectar con el microservicio proyectos
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Filtro el vector de personas para obtener solo la que tiene el nombre pasado como parámetro
+    let vectorPersonas = null
+    if (response) {
+        vectorPersonas = await response.json()
+        vectorPersonas = vectorPersonas.data.filter(persona => persona.nombre === nombre)
+        callBackFn(vectorPersonas)
+    }
+}
+
+
 // Funciones para mostrar como TABLE
 
 /**
@@ -195,52 +219,6 @@ Plantilla.cuerpoTrNombres = function (p) {
     </tr>`;
 }
 
-
-Plantilla.buscador = function (p,name) {
-    const d = p.data;
-    const nombre = d.nombre;
-    const apellidos = d.apellido;
-    const direc = d.direccion;
-    const añosParticipacion = d.aniosParticipacionMundial;
-    const numCompeticiones = d.numeroParticipacionesOlimpicas;
-    const tipo = d.tipo;
-  
-    if (nombre === name) {
-      let table = document.createElement('table');
-      let tbody = document.createElement('tbody');
-  
-      let tr = document.createElement('tr');
-      let td1 = document.createElement('td');
-      td1.appendChild(document.createTextNode(p.ref['@ref'].id));
-      let td2 = document.createElement('td');
-      td2.appendChild(document.createTextNode(nombre));
-      let td3 = document.createElement('td');
-      td3.appendChild(document.createTextNode(apellidos));
-      let td4 = document.createElement('td');
-      td4.appendChild(document.createTextNode(`${direc.calle},${direc.localidad},${direc.provincia},${direc.pais}`));
-      let td5 = document.createElement('td');
-      td5.appendChild(document.createTextNode(añosParticipacion));
-      let td6 = document.createElement('td');
-      td6.appendChild(document.createTextNode(numCompeticiones));
-      let td7 = document.createElement('td');
-      td7.appendChild(document.createTextNode(tipo));
-  
-      tr.appendChild(td1);
-      tr.appendChild(td2);
-      tr.appendChild(td3);
-      tr.appendChild(td4);
-      tr.appendChild(td5);
-      tr.appendChild(td6);
-      tr.appendChild(td7);
-      tbody.appendChild(tr);
-      table.appendChild(tbody);
-      
-      return table.outerHTML;
-    } else {
-      return '';
-    }
-}
-
 /**
  * Pie de la tabla en la que se muestran las personas
  * @returns Cadena con el pie de la tabla
@@ -279,16 +257,44 @@ Plantilla.imprimeNombres = function (vector) {
 
 }
 
-Plantilla.imprimeBuscador = function (vector,searchTerm) {
-    console.log( vector ) // Para comprobar lo que hay en vector
-    let msj = "";
-    msj += Plantilla.cabeceraTable();
-    vector.forEach(e => msj += Plantilla.buscador(e,searchTerm))
-    msj += Plantilla.pieTable();
 
-    // Borro toda la info de Article y la sustituyo por la que me interesa
-    Frontend.Article.actualizar( "Persona buscada", msj )
+/**
+ * Función que recuperar todos los plantilla llamando al MS plantilla
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */ 
+Plantilla.recuperaAlfabetic = async function (callBackFn) {
+    let response = null
 
+    // Intento conectar con el microservicio plantilla
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los plantilla que se han descargado
+    let vectorPlantilla = null
+    if (response) {
+        vectorPlantilla = await response.json()
+        vectorPlantilla.data.sort((a,b) => {
+            const nombreA = a.data.nombre.toLowerCase();
+            const nombreB = b.data.nombre.toLowerCase();
+
+            if(nombreA < nombreB) { 
+                return -1; 
+            }
+            if(nombreA > nombreB) { 
+                return 1; 
+            }
+            return 0;
+        });
+
+        callBackFn(vectorPlantilla.data)
+    }
 }
 
 /**
@@ -303,6 +309,10 @@ Plantilla.listarNombres = function () {
     this.recupera(this.imprimeNombres);
 }
 
-Plantilla.listarBuscar = function (searchTerm) {
-    this.recupera(this.imprimeBuscador(searchTerm));
+Plantilla.listarBuscar = function (search) {
+    this.recuperaBuscar(this.imprime,search);
+}
+
+Plantilla.listarNombreAlfa = function () {
+    this.recuperaAlfabetic(this.imprimeNombres);
 }
