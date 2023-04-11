@@ -136,7 +136,7 @@ Plantilla.recupera = async function (callBackFn) {
 
 Plantilla.recuperaBuscar = async function (callBackFn, nombre) {
     let response = null
-
+    console.log(nombre);
     // Intento conectar con el microservicio proyectos
     try {
         const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
@@ -152,8 +152,10 @@ Plantilla.recuperaBuscar = async function (callBackFn, nombre) {
     let vectorPersonas = null
     if (response) {
         vectorPersonas = await response.json()
-        vectorPersonas = vectorPersonas.data.filter(persona => persona.nombre === nombre)
-        callBackFn(vectorPersonas)
+        console.log(vectorPersonas.data[0].data)     
+        const filtro = vectorPersonas.data.filter(persona => persona.data.nombre === nombre)
+        console.log(filtro)        
+        callBackFn(filtro)
     }
 }
 
@@ -218,6 +220,8 @@ Plantilla.cuerpoTrNombres = function (p) {
     <td> ${apellidos}</td>
     </tr>`;
 }
+
+
 
 /**
  * Pie de la tabla en la que se muestran las personas
@@ -315,4 +319,112 @@ Plantilla.listarBuscar = function (search) {
 
 Plantilla.listarNombreAlfa = function () {
     this.recuperaAlfabetic(this.imprimeNombres);
+}
+
+/// Nombre de los campos del formulario para editar una persona
+Plantilla.form = {
+    NOMBRE: "form-persona-nombre",
+    APELLIDOS: "form-persona-apellidos",
+    EMAIL: "form-persona-email",
+    ANIO: "form-persona-anio",
+}
+
+// Tags que voy a usar para sustituir los campos
+Plantilla.plantillaTags = {
+    "ID": "### ID ###",
+    "NOMBRE": "### NOMBRE ###",
+    "APELLIDOS": "### APELLIDOS ###",
+    "DIRECCION": "### DIRECCION ###",
+    "AÑOS PARTICIPACION": "### AÑOS PARTICIPACION ###",
+    "NUMERO PARTICIPACIONES": "### NUMERO PARTICIPACIONES ###",
+    "TIPO": "### TIPO ###",
+}
+/// Plantilla para poner los datos de una persona en un tabla dentro de un formulario
+Plantilla.plantillaFormularioPersona = {}
+
+/**
+ * Actualiza el cuerpo de la plantilla deseada con los datos de la persona que se le pasa
+ * @param {String} Plantilla Cadena conteniendo HTML en la que se desea cambiar lso campos de la plantilla por datos
+ * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */           
+Plantilla.sustituyeTags = function (plantilla, persona) {
+    return plantilla
+        .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
+        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
+        .replace(new RegExp(Plantilla.plantillaTags.APELLIDOS, 'g'), persona.data.apellido)
+        .replace(new RegExp(Plantilla.plantillaTags.DIRECCION, 'g'), persona.data.direccion.calle)
+        .replace(new RegExp(Plantilla.plantillaTags["AÑOS PARTICIPACION"], 'g'), persona.data.aniosParticipacionMundial)
+        .replace(new RegExp(Plantilla.plantillaTags["NUMERO PARTICIPACIONES"], 'g'),persona.data.numeroParticipacionesOlimpicas)
+        .replace(new RegExp(Plantilla.plantillaTags.TIPO,'g'),persona.data.tipo)
+}
+
+
+/**
+ * Actualiza el formulario con los datos de la persona que se le pasa
+ * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */
+Plantilla.plantillaFormularioPersona.actualiza = function (persona) {
+    return Plantilla.sustituyeTags(this.formulario, persona)
+}
+
+/**
+ * Imprime los datos de una persona como una tabla dentro de un formulario usando la plantilla del formulario.
+ * @param {persona} Persona Objeto con los datos de la persona
+ * @returns Una cadena con la tabla que tiene ya los datos actualizados
+ */
+Plantilla.personaComoFormulario = function (persona) {
+    return Plantilla.plantillaFormularioPersona.actualiza( persona );
+}
+
+/// Objeto para almacenar los datos de la persona que se está mostrando
+Plantilla.personaMostrada = null
+
+/**
+ * Almacena los datos de la persona que se está mostrando
+ * @param {Persona} persona Datos de la persona a almacenar
+ */
+
+Plantilla.almacenaDatos = function (persona) {
+    Plantilla.personaMostrada = persona;
+}
+
+Plantilla.imprimeUnaPersona = function (persona) {
+    // console.log(persona) // Para comprobar lo que hay en vector
+    let msj = Plantilla.personaComoFormulario(persona);
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar("Mostrar una persona", msj)
+
+    // Actualiza el objeto que guarda los datos mostrados
+    Plantilla.almacenaDatos(persona)
+}
+
+/**
+ * Función que recuperar todas las personas llamando al MS Personas. 
+ * Posteriormente, llama a la función callBackFn para trabajar con los datos recuperados.
+ * @param {String} idPersona Identificador de la persona a mostrar
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+Plantilla.recuperaUnaPersona = async function (idPersona, callBackFn) {
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getPorId/" + idPersona
+        const response = await fetch(url);
+        if (response) {
+            const persona = await response.json()
+            callBackFn(persona)
+        }
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+    }
+}
+
+/**
+ * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
+ * @param {String} idPersona Identificador de la persona a mostrar
+ */
+Plantilla.mostrar = function (idPersona) {
+    this.recuperaUnaPersona(idPersona, this.imprimeUnaPersona);
 }

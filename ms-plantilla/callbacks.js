@@ -91,7 +91,7 @@ const CB_MODEL_SELECTS = {
     try {
             // console.log( "getPorId req", req.params.idPersona ) // req.params contiene todos los parámetros de la llamada
             let persona = await client.query(
-                q.Get(q.Ref(q.Collection('Personas'), req.params.idPersona))
+                q.Get(q.Ref(q.Collection(COLLECTION), req.params.idPersona))
            )
             // console.log( persona ) // Para comprobar qué se ha devuelto en persona
             CORS(res)
