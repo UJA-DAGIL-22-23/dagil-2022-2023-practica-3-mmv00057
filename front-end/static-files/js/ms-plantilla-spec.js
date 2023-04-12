@@ -138,4 +138,9 @@ Esto afecta a los métodos:
  por tanto: para esta práctica, se pueden dejar SIN HACER.
 
  */
- 
+ describe("Pie table ", function () {
+    it("debería devolver las etiquetas HTML para el pie de tabla",
+        function () {
+            expect(Proyectos.pieTable()).toBe("</tbody></table>");
+        });
+});

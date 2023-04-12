@@ -136,7 +136,7 @@ Plantilla.recupera = async function (callBackFn) {
 
 Plantilla.recuperaBuscar = async function (callBackFn, nombre) {
     let response = null
-    console.log(nombre);
+    //console.log(nombre);
     // Intento conectar con el microservicio proyectos
     try {
         const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
@@ -152,13 +152,37 @@ Plantilla.recuperaBuscar = async function (callBackFn, nombre) {
     let vectorPersonas = null
     if (response) {
         vectorPersonas = await response.json()
-        console.log(vectorPersonas.data[0].data)     
+       // console.log(vectorPersonas.data[0].data)     
         const filtro = vectorPersonas.data.filter(persona => persona.data.nombre === nombre)
-        console.log(filtro)        
+        //console.log(filtro)        
         callBackFn(filtro)
     }
 }
 
+Plantilla.recuperaBuscarMas = async function (callBackFn, var1, var2, var3) {
+    let response = null
+    //console.log(nombre);
+    // Intento conectar con el microservicio proyectos
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Filtro el vector de personas para obtener solo la que tiene el nombre pasado como parámetro
+    let vectorPersonas = null
+    if (response) {
+        vectorPersonas = await response.json()
+       // console.log(vectorPersonas.data)     
+        const filtro = vectorPersonas.data.filter(persona => persona.data.nombre === var1 && persona.data.direccion.localidad === var2 && persona.data.tipo === var3)
+        console.log(filtro)        
+        callBackFn(filtro)
+    }
+}
 
 // Funciones para mostrar como TABLE
 
@@ -317,6 +341,11 @@ Plantilla.listarBuscar = function (search) {
     this.recuperaBuscar(this.imprime,search);
 }
 
+Plantilla.listarBuscarMas = function (search1,search2, search3) {
+    this.recuperaBuscarMas(this.imprime,search1,search2,search3);
+}
+
+
 Plantilla.listarNombreAlfa = function () {
     this.recuperaAlfabetic(this.imprimeNombres);
 }
@@ -325,8 +354,13 @@ Plantilla.listarNombreAlfa = function () {
 Plantilla.form = {
     NOMBRE: "form-persona-nombre",
     APELLIDOS: "form-persona-apellidos",
-    EMAIL: "form-persona-email",
-    ANIO: "form-persona-anio",
+    CALLE: "form-persona-calle",
+    LOCALIDAD: "form-persona-localidad",
+    PROVINCIA: "form-persona-provincia",
+    PAIS: "form-persona-pais",
+    ANIO_PARTICIPACION: "form-persona-anio_participacion",
+    NUMERO_PARTICIPACION: "form-persona-numero_participacion",
+    TIPO: "form-persona-tipo",
 }
 
 // Tags que voy a usar para sustituir los campos
@@ -334,7 +368,10 @@ Plantilla.plantillaTags = {
     "ID": "### ID ###",
     "NOMBRE": "### NOMBRE ###",
     "APELLIDOS": "### APELLIDOS ###",
-    "DIRECCION": "### DIRECCION ###",
+    "CALLE": "### CALLE ###",
+    "LOCALIDAD": "### LOCALIDAD ###",
+    "PROVINCIA": "### PROVINCIA ###",
+    "PAIS": "### PAIS ###",
     "AÑOS PARTICIPACION": "### AÑOS PARTICIPACION ###",
     "NUMERO PARTICIPACIONES": "### NUMERO PARTICIPACIONES ###",
     "TIPO": "### TIPO ###",
@@ -342,6 +379,56 @@ Plantilla.plantillaTags = {
 /// Plantilla para poner los datos de una persona en un tabla dentro de un formulario
 Plantilla.plantillaFormularioPersona = {}
 
+Plantilla.plantillaFormularioPersona.formulario = `
+<form method='post' action=''>
+    <table width="100%" class="listado-personas">
+        <thead>
+            <th width="20%">Nombre</th><th width="20%">Apellidos</th><th width="20%">Calle</th>
+            <th width="20%">Localidad</th><th width="20%">Provincia</th><th width="20%">Pais</th>
+            <th width="20%">Años participacion</th><th width="20%">Número participaciones</th>
+            <th width="20%">Tipo</th><th width="20%">ACCIONES</th>
+        </thead>
+        <tbody>
+            <tr title="${Plantilla.plantillaTags.ID}">
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-nombre" required value="${Plantilla.plantillaTags.NOMBRE}" 
+                        name="nombre_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-apellidos" value="${Plantilla.plantillaTags.APELLIDOS}" 
+                        name="apellidos_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-calle" value="${Plantilla.plantillaTags.CALLE}" 
+                        name="calle_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-localidad" value="${Plantilla.plantillaTags.LOCALIDAD}" 
+                        name="localidad_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-provincia" value="${Plantilla. plantillaTags.PROVINCIA}" 
+                        name="provincia_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-pais" value="${Plantilla.plantillaTags.PAIS}" 
+                        name="pais_persona"/></td>
+                <td><input type="number" class="form-persona-elemento editable" disabled
+                        id="form-persona-anios-participacion" min="0" max="100" size="8" required
+                        value="${Plantilla.plantillaTags['AÑOS PARTICIPACION']}" 
+                        name="anios_participacion_persona"/></td>
+                <td><input type="number" class="form-persona-elemento editable" disabled
+                        id="form-persona-numero-participaciones" min="0" max="1000" size="8" required
+                        value="${Plantilla.plantillaTags['NUMERO PARTICIPACIONES']}" 
+                        name="numero_participaciones_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-tipo" value="${Plantilla.plantillaTags.TIPO}" 
+                        name="tipo_persona"/></td>
+                <td>
+                    <div><a href="javascript:Personas.editar()" class="opcion-secundaria mostrar">Editar</a></div>
+                    <div><a href="javascript:Personas.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
+                    <div><a href="javascript:Personas.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        `;
 /**
  * Actualiza el cuerpo de la plantilla deseada con los datos de la persona que se le pasa
  * @param {String} Plantilla Cadena conteniendo HTML en la que se desea cambiar lso campos de la plantilla por datos
@@ -353,7 +440,10 @@ Plantilla.sustituyeTags = function (plantilla, persona) {
         .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
         .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
         .replace(new RegExp(Plantilla.plantillaTags.APELLIDOS, 'g'), persona.data.apellido)
-        .replace(new RegExp(Plantilla.plantillaTags.DIRECCION, 'g'), persona.data.direccion.calle)
+        .replace(new RegExp(Plantilla.plantillaTags.CALLE, 'g'), persona.data.direccion.calle)
+        .replace(new RegExp(Plantilla.plantillaTags.LOCALIDAD, 'g'), persona.data.direccion.localidad)
+        .replace(new RegExp(Plantilla.plantillaTags.PROVINCIA, 'g'), persona.data.direccion.provincia)
+        .replace(new RegExp(Plantilla.plantillaTags.PAIS, 'g'), persona.data.direccion.pais)
         .replace(new RegExp(Plantilla.plantillaTags["AÑOS PARTICIPACION"], 'g'), persona.data.aniosParticipacionMundial)
         .replace(new RegExp(Plantilla.plantillaTags["NUMERO PARTICIPACIONES"], 'g'),persona.data.numeroParticipacionesOlimpicas)
         .replace(new RegExp(Plantilla.plantillaTags.TIPO,'g'),persona.data.tipo)

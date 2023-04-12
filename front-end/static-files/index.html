@@ -31,7 +31,7 @@
          title="Realiza un listado de todas las personas que hay en la BBDD solo los nombres">Listar nombres personas</a>
          <a href="javascript:Plantilla.listarNombreAlfa()" class="opcion-principal mostrar"
          title="Realiza un listado de todas las personas que hay en la BBDD en orden alfabetico">Listar personas en orden</a>
-         <a href="javascript:Plantilla.mostrar('358543989873311948')" class="opcion-principal mostrar"
+         <a href="javascript:Plantilla.mostrar('358544172259475661')" class="opcion-principal mostrar"
         title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
        
          <form>
@@ -45,6 +45,22 @@
               Plantilla.listarBuscar(searchTerm);
             }
           </script>
+
+     <form>
+        <label>Buscar por nombre, localidad y tipo:</label>
+        <input type="text" id="nom" name="nom">
+        <input type="text" id="loc" name="loc">
+        <input type="text" id="part" name="part">
+        <button type="button" onclick="buscarPorMas()">Buscar datos</button>
+    </form>
+    <script>
+        function buscarPorMas() {
+            var searchTerm1 = document.getElementById("nom").value;
+            var searchTerm2 = document.getElementById("loc").value;
+            var searchTerm3 = document.getElementById("part").value;
+            Plantilla.listarBuscarMas(searchTerm1,searchTerm2,searchTerm3);
+        }
+    </script>
          </nav>
 
     <!-- 
