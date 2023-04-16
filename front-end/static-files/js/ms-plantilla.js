@@ -306,7 +306,7 @@ Plantilla.imprimeMostrar = function (persona) {
 
 
 Plantilla.imprimeNombres = function (vector) {
-    console.log( vector ) // Para comprobar lo que hay en vector
+    //console.log( vector ) // Para comprobar lo que hay en vector
     let msj = "";
     msj += Plantilla.cabeceraTableNombres();
     vector.forEach(e => msj += Plantilla.cuerpoTrNombres(e))
