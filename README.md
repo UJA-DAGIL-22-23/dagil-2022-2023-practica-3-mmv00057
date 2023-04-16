@@ -669,8 +669,14 @@ Decimo documento:
 }
 ```
 Captura de pantalla de trello al inicio del incremento 1
-![Pantalla de home en fauna](./assets/img/trello1.png)
+![Pantalla de home](./assets/img/trello1.png)
 Captura de pantalla de trello al acabar el incremento 1
-![Pantalla de home en fauna](./assets/img/incremento1.png)
+![Pantalla de home](./assets/img/incremento1.png)
 Captura de pantalla de trello al inicio el incremento 2
-![Pantalla de home en fauna](./assets/img/incremento1.png)
+![Pantalla de home](./assets/img/incremento1.png)
+Captura de pantalla de trello al acabar el incremento 2
+![Pantalla de home](./assets/img/incremento2.png)
+Captura de pantalla de trello al iniciar el incremento 3
+![Pantalla de home](./assets/img/incremento2.png)
+Captura de pantalla de trello al acabar el incremento 3
+![Pantalla de home](./assets/img/incremento3.png)

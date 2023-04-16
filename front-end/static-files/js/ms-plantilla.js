@@ -159,7 +159,32 @@ Plantilla.recuperaBuscar = async function (callBackFn, nombre) {
     }
 }
 
-Plantilla.recuperaBuscarMas = async function (callBackFn, var1, var2, var3) {
+Plantilla.recuperaBuscarTip = async function (callBackFn, nombre,tipo,num,calle) {
+    let response = null
+    //console.log(nombre);
+    // Intento conectar con el microservicio proyectos
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Filtro el vector de personas para obtener solo la que tiene el nombre pasado como parámetro
+    let vectorPersonas = null
+    if (response) {
+        vectorPersonas = await response.json()
+       // console.log(vectorPersonas.data[0].data)     
+        const filtro = vectorPersonas.data.filter(persona => persona.data.nombre === nombre || persona.data.tipo === tipo || persona.data.numeroParticipacionesOlimpicas === num || persona.data.direccion.calle === calle )
+        //console.log(filtro)        
+        callBackFn(filtro)
+    }
+}
+
+Plantilla.recuperaBuscarMas = async function (callBackFn, var1, var2, var3,var4) {
     let response = null
     //console.log(nombre);
     // Intento conectar con el microservicio proyectos
@@ -178,7 +203,7 @@ Plantilla.recuperaBuscarMas = async function (callBackFn, var1, var2, var3) {
     if (response) {
         vectorPersonas = await response.json()
        // console.log(vectorPersonas.data)     
-        const filtro = vectorPersonas.data.filter(persona => persona.data.nombre === var1 && persona.data.direccion.localidad === var2 && persona.data.tipo === var3)
+        const filtro = vectorPersonas.data.filter(persona => persona.data.nombre === var1 && persona.data.direccion.localidad === var2 && persona.data.tipo === var3 && persona.data.aniosParticipacionMundial.filter(aniosParticipacionMundial => aniosParticipacionMundial === var4))
         console.log(filtro)        
         callBackFn(filtro)
     }
@@ -200,12 +225,7 @@ Plantilla.cabeceraTable = function () {
 }
 
 Plantilla.cabeceraTableNombres = function () {
-    return `<table class="listado-personas">
-        <thead>
-        <th>ID</th><th>Nombre</th><th>Apellidos</th>
-        </thead>
-        <tbody>
-    `;
+    return `<table class="listado-personas"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th></thead><tbody>`;
 }
 
 /**
@@ -232,6 +252,7 @@ Plantilla.cuerpoTr = function (p) {
     <td>${tipo}</td>
     </tr>`;
 }
+
 Plantilla.cuerpoTrNombres = function (p) {
     const d = p.data;
     const nombre = d.nombre;
@@ -269,6 +290,17 @@ Plantilla.imprime = function (vector) {
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar( "Listado de personas", msj )
+
+}
+
+Plantilla.imprimeMostrar = function (persona) {
+    let msj = "";
+    msj += Plantilla.cabeceraTable();
+    msj += Plantilla.cuerpoTr(persona)
+    msj += Plantilla.pieTable();
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar( "Persona mostrada", msj )
 
 }
 
@@ -341,156 +373,19 @@ Plantilla.listarBuscar = function (search) {
     this.recuperaBuscar(this.imprime,search);
 }
 
-Plantilla.listarBuscarMas = function (search1,search2, search3) {
-    this.recuperaBuscarMas(this.imprime,search1,search2,search3);
+
+Plantilla.listarBuscarTip = function (search1,search2, search3, search4) {
+    this.recuperaBuscarTip(this.imprime,search1,search2, search3, search4);
+}
+
+Plantilla.listarBuscarMas = function (search1,search2, search3,search4) {
+    this.recuperaBuscarMas(this.imprime,search1,search2,search3,search4);
 }
 
 
 Plantilla.listarNombreAlfa = function () {
     this.recuperaAlfabetic(this.imprimeNombres);
 }
-
-/// Nombre de los campos del formulario para editar una persona
-Plantilla.form = {
-    NOMBRE: "form-persona-nombre",
-    APELLIDOS: "form-persona-apellidos",
-    CALLE: "form-persona-calle",
-    LOCALIDAD: "form-persona-localidad",
-    PROVINCIA: "form-persona-provincia",
-    PAIS: "form-persona-pais",
-    ANIO_PARTICIPACION: "form-persona-anio_participacion",
-    NUMERO_PARTICIPACION: "form-persona-numero_participacion",
-    TIPO: "form-persona-tipo",
-}
-
-// Tags que voy a usar para sustituir los campos
-Plantilla.plantillaTags = {
-    "ID": "### ID ###",
-    "NOMBRE": "### NOMBRE ###",
-    "APELLIDOS": "### APELLIDOS ###",
-    "CALLE": "### CALLE ###",
-    "LOCALIDAD": "### LOCALIDAD ###",
-    "PROVINCIA": "### PROVINCIA ###",
-    "PAIS": "### PAIS ###",
-    "AÑOS PARTICIPACION": "### AÑOS PARTICIPACION ###",
-    "NUMERO PARTICIPACIONES": "### NUMERO PARTICIPACIONES ###",
-    "TIPO": "### TIPO ###",
-}
-/// Plantilla para poner los datos de una persona en un tabla dentro de un formulario
-Plantilla.plantillaFormularioPersona = {}
-
-Plantilla.plantillaFormularioPersona.formulario = `
-<form method='post' action=''>
-    <table width="100%" class="listado-personas">
-        <thead>
-            <th width="20%">Nombre</th><th width="20%">Apellidos</th><th width="20%">Calle</th>
-            <th width="20%">Localidad</th><th width="20%">Provincia</th><th width="20%">Pais</th>
-            <th width="20%">Años participacion</th><th width="20%">Número participaciones</th>
-            <th width="20%">Tipo</th><th width="20%">ACCIONES</th>
-        </thead>
-        <tbody>
-            <tr title="${Plantilla.plantillaTags.ID}">
-                <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-nombre" required value="${Plantilla.plantillaTags.NOMBRE}" 
-                        name="nombre_persona"/></td>
-                <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-apellidos" value="${Plantilla.plantillaTags.APELLIDOS}" 
-                        name="apellidos_persona"/></td>
-                <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-calle" value="${Plantilla.plantillaTags.CALLE}" 
-                        name="calle_persona"/></td>
-                <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-localidad" value="${Plantilla.plantillaTags.LOCALIDAD}" 
-                        name="localidad_persona"/></td>
-                <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-provincia" value="${Plantilla. plantillaTags.PROVINCIA}" 
-                        name="provincia_persona"/></td>
-                <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-pais" value="${Plantilla.plantillaTags.PAIS}" 
-                        name="pais_persona"/></td>
-                <td><input type="number" class="form-persona-elemento editable" disabled
-                        id="form-persona-anios-participacion" min="0" max="100" size="8" required
-                        value="${Plantilla.plantillaTags['AÑOS PARTICIPACION']}" 
-                        name="anios_participacion_persona"/></td>
-                <td><input type="number" class="form-persona-elemento editable" disabled
-                        id="form-persona-numero-participaciones" min="0" max="1000" size="8" required
-                        value="${Plantilla.plantillaTags['NUMERO PARTICIPACIONES']}" 
-                        name="numero_participaciones_persona"/></td>
-                <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-tipo" value="${Plantilla.plantillaTags.TIPO}" 
-                        name="tipo_persona"/></td>
-                <td>
-                    <div><a href="javascript:Personas.editar()" class="opcion-secundaria mostrar">Editar</a></div>
-                    <div><a href="javascript:Personas.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
-                    <div><a href="javascript:Personas.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
-                </td>
-                </tr>
-                </tbody>
-            </table>
-        </form>
-        `;
-/**
- * Actualiza el cuerpo de la plantilla deseada con los datos de la persona que se le pasa
- * @param {String} Plantilla Cadena conteniendo HTML en la que se desea cambiar lso campos de la plantilla por datos
- * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
- * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
- */           
-Plantilla.sustituyeTags = function (plantilla, persona) {
-    return plantilla
-        .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
-        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
-        .replace(new RegExp(Plantilla.plantillaTags.APELLIDOS, 'g'), persona.data.apellido)
-        .replace(new RegExp(Plantilla.plantillaTags.CALLE, 'g'), persona.data.direccion.calle)
-        .replace(new RegExp(Plantilla.plantillaTags.LOCALIDAD, 'g'), persona.data.direccion.localidad)
-        .replace(new RegExp(Plantilla.plantillaTags.PROVINCIA, 'g'), persona.data.direccion.provincia)
-        .replace(new RegExp(Plantilla.plantillaTags.PAIS, 'g'), persona.data.direccion.pais)
-        .replace(new RegExp(Plantilla.plantillaTags["AÑOS PARTICIPACION"], 'g'), persona.data.aniosParticipacionMundial)
-        .replace(new RegExp(Plantilla.plantillaTags["NUMERO PARTICIPACIONES"], 'g'),persona.data.numeroParticipacionesOlimpicas)
-        .replace(new RegExp(Plantilla.plantillaTags.TIPO,'g'),persona.data.tipo)
-}
-
-
-/**
- * Actualiza el formulario con los datos de la persona que se le pasa
- * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
- * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
- */
-Plantilla.plantillaFormularioPersona.actualiza = function (persona) {
-    return Plantilla.sustituyeTags(this.formulario, persona)
-}
-
-/**
- * Imprime los datos de una persona como una tabla dentro de un formulario usando la plantilla del formulario.
- * @param {persona} Persona Objeto con los datos de la persona
- * @returns Una cadena con la tabla que tiene ya los datos actualizados
- */
-Plantilla.personaComoFormulario = function (persona) {
-    return Plantilla.plantillaFormularioPersona.actualiza( persona );
-}
-
-/// Objeto para almacenar los datos de la persona que se está mostrando
-Plantilla.personaMostrada = null
-
-/**
- * Almacena los datos de la persona que se está mostrando
- * @param {Persona} persona Datos de la persona a almacenar
- */
-
-Plantilla.almacenaDatos = function (persona) {
-    Plantilla.personaMostrada = persona;
-}
-
-Plantilla.imprimeUnaPersona = function (persona) {
-    // console.log(persona) // Para comprobar lo que hay en vector
-    let msj = Plantilla.personaComoFormulario(persona);
-
-    // Borro toda la info de Article y la sustituyo por la que me interesa
-    Frontend.Article.actualizar("Mostrar una persona", msj)
-
-    // Actualiza el objeto que guarda los datos mostrados
-    Plantilla.almacenaDatos(persona)
-}
-
 /**
  * Función que recuperar todas las personas llamando al MS Personas. 
  * Posteriormente, llama a la función callBackFn para trabajar con los datos recuperados.
@@ -511,10 +406,48 @@ Plantilla.recuperaUnaPersona = async function (idPersona, callBackFn) {
     }
 }
 
+Plantilla.recuperaAlfabeticVarios = async function (campo, callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio plantilla
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los plantilla que se han descargado
+    let vectorPlantilla = null
+    if (response) {
+        vectorPlantilla = await response.json()
+        vectorPlantilla.data.sort((a,b) => {
+            const campoA = a.data[campo].toLowerCase();
+            const campoB = b.data[campo].toLowerCase();
+
+            if(campoA < campoB) { 
+                return -1; 
+            }
+            if(campoA > campoB) { 
+                return 1; 
+            }
+            return 0;
+        });
+
+        callBackFn(vectorPlantilla.data)
+    }
+}
 /**
  * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
  * @param {String} idPersona Identificador de la persona a mostrar
  */
 Plantilla.mostrar = function (idPersona) {
-    this.recuperaUnaPersona(idPersona, this.imprimeUnaPersona);
+    this.recuperaUnaPersona(idPersona, this.imprimeMostrar);
+}
+
+Plantilla.listarOrden = function (variable) {
+    Plantilla.recuperaAlfabeticVarios(variable,Plantilla.imprime);
 }
