@@ -39,14 +39,14 @@ describe("Plantilla.mostrarHome: ", function () {
         function () {
             Plantilla.mostrarHome()
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Plantilla.dDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             Plantilla.mostrarHome(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Plantilla.dDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje",
@@ -54,12 +54,12 @@ describe("Plantilla.mostrarHome: ", function () {
             // Objeto vacío
             Plantilla.mostrarHome({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Plantilla.dDescargadosNulos.mensaje)
 
             // Objeto sin campo mensaje
             Plantilla.mostrarHome({ foo: "bar" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Plantilla.dDescargadosNulos.mensaje)
         })
 
     it("muestra correctamente el título y el mensaje",
@@ -76,14 +76,14 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
         function () {
             Plantilla.mostrarAcercaDe()
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Plantilla.dDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             Plantilla.mostrarAcercaDe(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Plantilla.dDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje o autor o email o fecha ",
@@ -91,24 +91,24 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
             // Objeto vacío
             Plantilla.mostrarAcercaDe({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Plantilla.dDescargadosNulos.mensaje) >= 0).toBeTrue()
 
             // Objeto sin campo mensaje
             Plantilla.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Plantilla.dDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo autor
             Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Plantilla.dDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo email
             Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Plantilla.dDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo fecha
             Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Plantilla.dDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",

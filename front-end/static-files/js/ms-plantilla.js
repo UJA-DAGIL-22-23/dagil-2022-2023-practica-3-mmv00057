@@ -13,7 +13,7 @@ let Plantilla = {};
 
 // Plantilla de dDescargados vacíos
 Plantilla.dDescargadosNulos = {
-    mensaje: "d Descargados No válidos",
+    mensaje: "Datos Descargados No válidos",
     autor: "",
     email: "",
     fecha: ""
