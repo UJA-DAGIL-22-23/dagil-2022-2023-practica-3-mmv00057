@@ -140,21 +140,21 @@ Esto afecta a los métodos:
  por tanto: para esta práctica, se pueden dejar SIN HACER.
 
  */
- describe("Pie table ", function () {
+ describe("Plantilla.pieTable  ", function () {
     it("debería devolver las etiquetas HTML para el pie de tabla",
         function () {
             expect(Plantilla.pieTable()).toBe("</tbody></table>");
         });
 });
 
-describe("Cabecera table Nombres", function () {
+describe("Plantilla.cabeceraTableNombres", function () {
     it("debería devolver las etiquetas HTML para la cabecera de tabla",
         function () {
             expect(Plantilla.cabeceraTableNombres()).toBe(`<table class="listado-personas"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th></thead><tbody>`);
         });
 });
 
-describe("Cuerpo de fila de la tabla", function () {
+describe("Plantilla.cuerpoTr", function () {
     it("debería comprobar que lo que muestra no esta vacío",
         function () {
             const p = {
@@ -191,7 +191,7 @@ describe("Cuerpo de fila de la tabla", function () {
 });
 
 
-describe("Imprimir nombres", function () {
+describe("Plantilla.imprimeNombres", function () {
     let vector;
     beforeEach(function () {
         // Crear un mock para el objeto Frontend.Article
@@ -223,7 +223,7 @@ describe("Imprimir nombres", function () {
 });
 
 
-describe("Función de impresión y mostrado de persona", function () {
+describe("Plantilla.imprimeMostrar", function () {
     beforeEach(function () {
         // Mock de la función Frontend.Article.actualizar()
         spyOn(Frontend.Article, 'actualizar');
@@ -258,7 +258,7 @@ describe("Función de impresión y mostrado de persona", function () {
     });
 });
 
-describe("Imprimir tabla de personas", function () {
+describe(" Plantilla.imprime", function () {
     beforeEach(function () {
         // Mock de la función Frontend.Article.actualizar()
         spyOn(Frontend.Article, 'actualizar');
@@ -337,9 +337,7 @@ describe("Imprimir tabla de personas", function () {
     });
 });
 
-
-
-describe("Cuerpo de la tabla con nombres", function () {
+describe("Plantilla.cuerpoTrNombres", function () {
     it("debería devolver la cadena HTML correcta para una fila de tabla con nombres",
         function () {
             const p = {
@@ -362,45 +360,7 @@ describe("Cuerpo de la tabla con nombres", function () {
         });
 });
 
-describe("Cuerpo de fila de tabla", function () {
-    it("debería comprobar que lo que muestra no esta vacío",
-        function () {
-            const p = {
-                data: {
-                    nombre: "Juan", 
-                    apellido: "Pérez", 
-                    direccion: {
-                        calle: "Calle 123", 
-                        provincia: "Provincia",
-                        pais: "País"
-                    },
-                    aniosParticipacionMundial: 5,
-                    numeroParticipacionesOlimpicas: 3,
-                    tipo: "Deportista" 
-                },
-                ref: {
-                    "@ref": {
-                        id: "12345"
-                    }
-                }
-            };
-
-            const expectedHTML = `<tr title="12345">
-            <td>12345</td>
-            <td>Juan</td>
-            <td> Pérez</td>
-            <td>Calle 123,Ciudad,Provincia,País</td>
-            <td>5</td>
-            <td>3</td>
-            <td>Deportista</td>
-            </tr>`;
-
-            expect(Plantilla.cuerpoTr(p)).not.toBe('');
-        });
-});
-
-
-describe("Cabecera de la tabla", function () {
+describe("Plantilla.cabeceraTable", function () {
     it("debería devolver la etiqueta HTML para la cabecera de la tabla", function () {
         var expectedOutput = `<table class="listado-personas">
         <thead>
