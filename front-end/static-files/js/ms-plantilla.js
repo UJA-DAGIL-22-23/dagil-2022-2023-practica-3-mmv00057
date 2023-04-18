@@ -440,6 +440,78 @@ Plantilla.recuperaAlfabeticVarios = async function (campo, callBackFn) {
         callBackFn(vectorPlantilla.data)
     }
 }
+
+Plantilla.recuperaAlfabeticVarios2 = async function (campo,campo1, callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio plantilla
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los plantilla que se han descargado
+    let vectorPlantilla = null
+    if (response) {
+        vectorPlantilla = await response.json()
+        vectorPlantilla.data.sort((a,b) => {
+            const campoA = a.data[campo][campo1].toLowerCase();
+            const campoB = b.data[campo][campo1].toLowerCase();
+
+            if(campoA < campoB) { 
+                return -1; 
+            }
+            if(campoA > campoB) { 
+                return 1; 
+            }
+            return 0;
+        });
+
+        callBackFn(vectorPlantilla.data)
+    }
+}
+
+
+Plantilla.recuperaNumericamenteVarios = async function (campo, callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio plantilla
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los plantilla que se han descargado
+    let vectorPlantilla = null
+    if (response) {
+        vectorPlantilla = await response.json()
+        vectorPlantilla.data.sort((a,b) => {
+            const campoA = parseFloat(a.data[campo]);
+            const campoB = parseFloat(b.data[campo]);
+
+            if(campoA < campoB) { 
+                return -1; 
+            }
+            if(campoA > campoB) { 
+                return 1; 
+            }
+            return 0;
+        });
+
+        callBackFn(vectorPlantilla.data)
+    }
+}
+
 /**
  * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
  * @param {String} idPersona Identificador de la persona a mostrar
@@ -451,3 +523,13 @@ Plantilla.mostrar = function (idPersona) {
 Plantilla.listarOrden = function (variable) {
     Plantilla.recuperaAlfabeticVarios(variable,Plantilla.imprime);
 }
+
+Plantilla.listarOrden2 = function (variable) {
+    Plantilla.recuperaNumericamenteVarios(variable,Plantilla.imprime);
+}
+
+Plantilla.listarOrden3 = function (variable,variable1) {
+    Plantilla.recuperaAlfabeticVarios2(variable,variable1,Plantilla.imprime);
+}
+
+

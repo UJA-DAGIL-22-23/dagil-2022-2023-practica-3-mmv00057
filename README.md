@@ -670,14 +670,38 @@ Decimo documento:
 }
 ```
 Captura de pantalla de trello al inicio del incremento 1
-![Pantalla de home](./assets/img/trello1.png)
-Captura de pantalla de trello al acabar el incremento 1
-![Pantalla de home](./assets/img/incremento1.png)
+![Incremento 1](./assets/img/trello1.png)
+En este incremento, se han implementado las H.U 1, 2 y 4.
+![HU 1](./assets/img/incremento1.1.png)
+
+![HU 2](./assets/img/incremento1.2.png)
+
+![HU 4](./assets/img/incremento1.4.png)
+
+Captura de pantalla de trello al acabar el incremento 1 V1_2023
+![Incremento 1](./assets/img/incremento1.png)
 Captura de pantalla de trello al inicio el incremento 2
-![Pantalla de home](./assets/img/incremento1.png)
-Captura de pantalla de trello al acabar el incremento 2
-![Pantalla de home](./assets/img/incremento2.png)
+![Incremento 2](./assets/img/incremento1.png)
+En este incremento, se han implementado las H.U 3, 8 y 10.
+
+![HU 3](./assets/img/incremento2.3.png)
+
+![HU 8](./assets/img/incremento2.8.png)
+
+![HU 10](./assets/img/incremento2.10.png)
+
+Captura de pantalla de trello al acabar el incremento 2 V2_2023
+![Incremento 2](./assets/img/incremento2.png)
 Captura de pantalla de trello al iniciar el incremento 3
-![Pantalla de home](./assets/img/incremento2.png)
-Captura de pantalla de trello al acabar el incremento 3
-![Pantalla de home](./assets/img/incremento3.png)
+![Incremento 3](./assets/img/incremento2.png)
+En este incremento, se han implementado las H.U 5, 6 y 11.
+NOTA: en este incremento se eligió la H.U 9 pero debido a que no se llegó a entender bien, se ha escogido la H.U 5.
+
+![HU 5](./assets/img/incremento3.5.png)
+
+![HU 6](./assets/img/incremento3.6.png)
+
+![HU 11](./assets/img/incremento3.11.png)
+
+Captura de pantalla de trello al acabar el incremento 3 V3_2023
+![Incremento 3](./assets/img/incremento3.png)

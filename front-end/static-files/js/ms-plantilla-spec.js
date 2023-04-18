@@ -221,7 +221,7 @@ describe("Plantilla.imprimeNombres", function () {
         expect(Frontend.Article.actualizar).toHaveBeenCalledWith("Listado de nombre de personas", jasmine.any(String));
     });
 });
-
+ 
 
 describe("Plantilla.imprimeMostrar", function () {
     beforeEach(function () {
