@@ -439,7 +439,9 @@ El código en ese repositorio muestra una aplicación similar, pero con mucha m�
 Además, incluye documentación sobre dicho código y un vídeo descriptivo de cómo se ha realizado y cómo funciona la aplicación de ejemplo.
 
 
-
+### Modesto Monzon Vazquez
+Alumno de Informática de la Universidad de Jaén.
+* **Correo**: mmv00057@red.ujaen.es
 
 Enlace a trello:
 https://trello.com/invite/b/lbyixKLJ/ATTIa510caff46c8bec1eb4f483467e7d0dc800196C5/practica-3
